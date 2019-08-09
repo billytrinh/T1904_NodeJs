@@ -1,0 +1,23 @@
+{
+  "name": "t1904a",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "start" : "node server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/billytrinh/T1904_NodeJs.git"
+  },
+  "author": "quanghoa",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/billytrinh/T1904_NodeJs/issues"
+  },
+  "homepage": "https://github.com/billytrinh/T1904_NodeJs#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
