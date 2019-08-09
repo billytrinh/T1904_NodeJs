@@ -20,3 +20,4 @@ bin-release/
 .idea/
 .idea/*
 node_modules
+node_modules/
