@@ -2,11 +2,14 @@ const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
 
+const bodyParser = require("body-parser");
+var multer = require("multer");
+
 // Ket noi mongoDB
 mongoose.connect("mongodb+srv://root:root123@cluster0-hfbob.azure.mongodb.net/t1904a",
     function (err) {
     if(err){
-        console.log("error");
+        console.log("error"+err.toString());
     }else{
         console.log("success");
     }
@@ -18,6 +21,12 @@ var Product  = mongoose.model("product",
 var User = mongoose.model("user",{username: String,email:String,password:String});
 
 app.use(express.static("public"));
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(multer({dest:__dirname+'/public/upload'}).any());
+
+app.set("view engine","ejs");
 
 app.listen(1234,function (err) {
     console.log("server is running");
@@ -40,12 +49,23 @@ app.get("/contact-us",function (req,res) {
 app.get("/dang-ky-tai-khoan",function (req,res) {
     res.sendFile(__dirname+"/views/register.html");
 });
-app.get("/luu-tai-khoan",function (req, res) {
-    var username1 = req.query.username123;
-    var email1 = req.query.email;
-    var pass1 = req.query.password;
+app.post("/dang-ky-tai-khoan",function (req, res) {
+    var username1 = req.body.username123;
+    var email1 = req.body.email;
+    var pass1 = req.body.password;
 
     var u = new User({username:username1,email:email1,password: pass1});
     u.save();
     res.send("dang ky tai khoan thanh cong");
+});
+app.get("/danh-sach-tai-khoan",function (req,res) {
+    User.find({},function (err,data) {
+        if(err){
+            res.send("error");
+        }else{
+            res.render('list',{users:data});
+        }
+    }).catch(function (err) {
+        res.send("error");
+    });
 });

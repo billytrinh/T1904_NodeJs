@@ -15,21 +15,13 @@
                 <th>Password</th>
             </thead>
             <tbody>
+            <% for(var i = 0;i< users.length;i++){ %>
                 <tr>
-                    <td>Nguyen the anh</td>
-                    <td>theanh@gmail.com</td>
-                    <td>123456</td>
+                    <td><%= users[i].username %></td>
+                    <td><%= users[i].email %></td>
+                    <td><%= users[i].password %></td>
                 </tr>
-                <tr>
-                    <td>Nguyen the anh</td>
-                    <td>theanh@gmail.com</td>
-                    <td>123456</td>
-                </tr>
-                <tr>
-                    <td>Nguyen the anh</td>
-                    <td>theanh@gmail.com</td>
-                    <td>123456</td>
-                </tr>
+            <% }%>
             </tbody>
         </table>
     </div>
