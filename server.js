@@ -2,6 +2,10 @@ const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
 
+// Use models
+const User = require("./models/User");
+const Product = require("./models/Product");
+
 const bodyParser = require("body-parser");
 var multer = require("multer");
 
@@ -15,10 +19,10 @@ mongoose.connect("mongodb+srv://root:root123@cluster0-hfbob.azure.mongodb.net/t1
     }
 });
 
-var Product  = mongoose.model("product",
-    {product_name: String,price: Number,qty: Number});
+// var Product  = mongoose.model("product",
+//     {product_name: String,price: Number,qty: Number});
 
-var User = mongoose.model("user",{username: String,email:String,password:String});
+//var User = mongoose.model("user",{username: String,email:String,password:String});
 
 app.use(express.static("public"));
 
