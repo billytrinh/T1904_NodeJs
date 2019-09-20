@@ -73,3 +73,11 @@ app.get("/danh-sach-tai-khoan",function (req,res) {
         res.send("error");
     });
 });
+
+app.get("/chi-tiet",function (req,res) {
+    var _id = req.query.id;
+    User.findById(_id).then(function (data) {
+        res.render("chitiet",{user:data});
+    });
+
+})
